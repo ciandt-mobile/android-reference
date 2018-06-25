@@ -2,12 +2,19 @@
 
 buildscript {
     ext.kotlin_version = '1.2.41'
+    ext.dagger_version = '2.16'
+    ext.dagger_android_support_version = '2.16'
+    ext.retrofit_version = '2.3.0'
+    ext.okhttp_version = '3.10.0'
+    ext.timber_version = '4.6.1'
+    ext.crashlytics_version = '2.8.0'
+
     repositories {
         google()
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.2'
+        classpath 'com.android.tools.build:gradle:3.1.3'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         // NOTE: Do not place your application dependencies here; they belong

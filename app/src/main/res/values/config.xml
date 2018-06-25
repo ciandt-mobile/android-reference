@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="default_api_timeout">45</integer>
+    <integer name="default_api_timeout_fast">3</integer>
+    <string name="url_api">https://api.github.com/</string>
+</resources>
