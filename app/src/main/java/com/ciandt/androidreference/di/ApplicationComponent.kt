@@ -2,6 +2,7 @@ package com.ciandt.androidreference.di
 
 import com.ciandt.androidreference.AndroidReference
 import com.ciandt.androidreference.provider.api.di.ApiModule
+import com.ciandt.androidreference.ui.di.ViewModelModule
 import dagger.Component
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
@@ -12,8 +13,9 @@ import javax.inject.Singleton
     modules = [
         AndroidSupportInjectionModule::class,
         ApplicationBinders::class,
-        ApiModule::class,
-        ApplicationModule::class]
+        ApplicationModule::class,
+        ViewModelModule::class
+    ]
 )
 interface ApplicationComponent : AndroidInjector<AndroidReference> {
 

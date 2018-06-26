@@ -1,6 +1,6 @@
 package com.ciandt.androidreference.di
 
-import com.ciandt.androidreference.ui.MainActivity
+import com.ciandt.androidreference.ui.publicGists.PublicGistsFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -8,5 +8,5 @@ import dagger.android.ContributesAndroidInjector
 interface ApplicationBinders {
 
     @ContributesAndroidInjector()
-    fun mainActivity(): MainActivity
+    fun publicGistsFragment(): PublicGistsFragment
 }

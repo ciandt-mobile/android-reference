@@ -1,10 +1,10 @@
 package com.ciandt.androidreference.ui
 
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import com.ciandt.androidreference.R
-import dagger.android.support.DaggerAppCompatActivity
 
-class MainActivity : DaggerAppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

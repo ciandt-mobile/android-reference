@@ -2,6 +2,7 @@ package com.ciandt.androidreference.business
 
 import android.support.test.filters.MediumTest
 import com.ciandt.androidreference.business.data.Failure
+import com.ciandt.androidreference.business.data.Resource
 import com.ciandt.androidreference.business.data.Success
 import com.ciandt.androidreference.business.impl.GistBusinessImpl
 import com.ciandt.androidreference.entity.error.Error
@@ -51,12 +52,14 @@ class GistBusinessTest {
     fun publicGists_shouldReturnGists() {
         `when`(gistApiProvider.publicGists()).thenReturn(gists)
 
-        runBlocking {
-            val result = gistBusiness.publicGists().await() as Success<Array<Gist>>
+        var result: Success<Array<Gist>>? = null
 
-            verify(gistApiProvider).publicGists()
-            assertSame(gists, result.data)
+        runBlocking {
+            result = gistBusiness.publicGists().await() as Success<Array<Gist>>
         }
+
+        verify(gistApiProvider).publicGists()
+        assertSame(gists, result?.data)
     }
 
     @Test
@@ -65,14 +68,15 @@ class GistBusinessTest {
 
         `when`(gistApiProvider.publicGists()).thenThrow(Error(Network))
 
-        runBlocking {
-            val result = gistBusiness.publicGists().await()
+        var result: Resource<Array<Gist>>? = null
 
-            assertTrue(result is Failure)
-            assertEquals(Network, (result as Failure).error.type)
-            verify(gistApiProvider).publicGists()
+        runBlocking {
+            result = gistBusiness.publicGists().await()
         }
 
+        assertTrue(result is Failure)
+        assertEquals(Network, (result as Failure).error.type)
+        verify(gistApiProvider).publicGists()
     }
 
     @Test
@@ -89,11 +93,13 @@ class GistBusinessTest {
         val provider = GistApiProviderImpl(api)
         val business = GistBusinessImpl(provider)
 
-        runBlocking {
-            val result = business.publicGists().await() as Success<Array<Gist>>
+        var result: Success<Array<Gist>>? = null
 
-            verify(api).public()
-            assertSame(gists, result.data)
+        runBlocking {
+            result = business.publicGists().await() as Success<Array<Gist>>
         }
+
+        verify(api).public()
+        assertSame(gists, result?.data)
     }
 }
