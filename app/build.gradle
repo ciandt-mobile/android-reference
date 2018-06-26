@@ -51,10 +51,13 @@ dependencies {
 
     // Unit testing
     testImplementation 'junit:junit:4.12'
+    testImplementation "com.android.support.test:rules:$support_test_version"
+    testImplementation "com.squareup.okhttp3:mockwebserver:$okhttp_version"
 
     // UI testing
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation "com.android.support.test:runner:$support_test_version"
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    testImplementation "org.mockito:mockito-core:$mockito_version"
 
     // Dependency injection
     implementation "com.google.dagger:dagger:$dagger_version"

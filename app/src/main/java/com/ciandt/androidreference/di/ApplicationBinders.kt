@@ -1,6 +1,6 @@
 package com.ciandt.androidreference.di
 
-import com.ciandt.androidreference.view.MainActivity
+import com.ciandt.androidreference.ui.MainActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

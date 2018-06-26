@@ -1,4 +1,4 @@
-package com.ciandt.androidreference.view
+package com.ciandt.androidreference.ui
 
 import android.os.Bundle
 import com.ciandt.androidreference.R
