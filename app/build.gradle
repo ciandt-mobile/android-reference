@@ -34,9 +34,21 @@ android {
     }
 }
 
+kotlin {
+    experimental {
+        coroutines 'enable'
+    }
+}
+
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    //Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutines_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlin_coroutines_version"
+
+    //Support
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
 

@@ -6,7 +6,7 @@ import com.ciandt.androidreference.entity.gist.Gist
 import com.ciandt.androidreference.provider.api.impl.GistApiProviderImpl
 import com.google.gson.Gson
 import okhttp3.mockwebserver.MockResponse
-import org.junit.Assert.assertFalse
+import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
@@ -20,27 +20,30 @@ import retrofit2.Response
 class GistApiProviderTest : ProviderBaseTest<GistApi>(GistApi::class) {
 
     @Mock
-    lateinit var mockApi: GistApi
+    private lateinit var mockApi: GistApi
 
     @Mock
-    lateinit var publicCall: Call<Array<Gist>>
+    private lateinit var publicCall: Call<Array<Gist>>
 
     @Mock
-    lateinit var response: Response<Array<Gist>>
+    private lateinit var response: Response<Array<Gist>>
 
     @Test
     @SmallTest
     fun publicGists_shouldReturnGists() {
-        `when`(response.body()).thenReturn(emptyArray())
+        val gists = emptyArray<Gist>()
+
+        `when`(response.body()).thenReturn(gists)
         `when`(response.isSuccessful).thenReturn(true)
         `when`(publicCall.execute()).thenReturn(response)
         `when`(mockApi.public()).thenReturn(publicCall)
 
         val provider = GistApiProviderImpl(mockApi)
 
-        provider.publicGists()
+        val result = provider.publicGists()
 
         verify(mockApi).public()
+        assertSame(gists, result)
     }
 
     @Test
@@ -48,8 +51,11 @@ class GistApiProviderTest : ProviderBaseTest<GistApi>(GistApi::class) {
     fun publicGists_showReturnGists_integrated() {
         val provider = GistApiProviderImpl(api)
 
-        mockWebServer.enqueue(MockResponse().setBody(Gson().toJson(arrayOf(Gist("")))))
+        mockWebServer.enqueue(MockResponse().setBody(Gson().toJson(arrayOf(Gist("Test")))))
 
-        assertFalse(provider.publicGists().isEmpty())
+        val result = provider.publicGists()
+
+        assertFalse(result.isEmpty())
+        assertEquals("Test", result.first().htmlUrl)
     }
 }
