@@ -5,7 +5,7 @@ import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
 @Module
-interface ApplicationBinders {
+interface FragmentModule {
 
     @ContributesAndroidInjector()
     fun publicGistsFragment(): PublicGistsFragment

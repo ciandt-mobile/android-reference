@@ -1,7 +1,8 @@
 package com.ciandt.androidreference.di
 
 import com.ciandt.androidreference.AndroidReference
-import com.ciandt.androidreference.ui.di.ViewModelModule
+import com.ciandt.androidreference.ui.BaseTest
+import com.ciandt.androidreference.ui.di.ViewModelFactoryModule
 import dagger.Component
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
@@ -11,13 +12,14 @@ import javax.inject.Singleton
 @Component(
     modules = [
         AndroidSupportInjectionModule::class,
-        FragmentModule::class,
         ApplicationModule::class,
-        ViewModelModule::class
-    ]
+        FragmentModule::class,
+        ViewModelFactoryModule::class]
 )
-interface ApplicationComponent : AndroidInjector<AndroidReference> {
+interface TestApplicationComponent : AndroidInjector<AndroidReference> {
 
     @Component.Builder
     abstract class Builder : AndroidInjector.Builder<AndroidReference>()
+
+    fun injectTest(test: BaseTest)
 }
