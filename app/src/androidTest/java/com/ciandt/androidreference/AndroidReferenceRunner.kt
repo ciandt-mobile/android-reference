@@ -7,7 +7,8 @@ import com.github.tmurakami.dexopener.DexOpener
 
 class AndroidReferenceRunner : AndroidJUnitRunner() {
     override fun newApplication(cl: ClassLoader, className: String, context: Context): Application {
-        DexOpener.install(this)
+        // TODO: DexOpener apresenta problemas com o novo databinding. Testes espressos param de funcionar
+        //DexOpener.install(this)
         return super.newApplication(cl, AndroidReference::class.java.name, context)
     }
 }

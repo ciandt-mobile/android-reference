@@ -8,7 +8,7 @@ import com.ciandt.androidreference.R
 import com.ciandt.androidreference.databinding.GistItemBinding
 import com.ciandt.androidreference.entity.gist.Gist
 
-class GistsAdapter() : RecyclerView.Adapter<GistViewHolder>() {
+class GistsAdapter : RecyclerView.Adapter<GistViewHolder>() {
 
     private lateinit var layoutInflater: LayoutInflater
     private var gists: Array<Gist> = emptyArray()
